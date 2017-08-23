@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/saml/login', function () {
-    include '\app\SAML\saml\AuthnRequest.php';
-    include '\app\SAML\saml\Acs.php';
+    include '/home/appuser/web/dev.crmoz.com/public_html/ZohoAuth/app/SAML/saml/AuthnRequest.php';
+    include '/home/appuser/web/dev.crmoz.com/public_html/ZohoAuth/app/SAML/saml/Acs.php';
 
     if( isset($_POST['SAMLResponse']) )
     {
