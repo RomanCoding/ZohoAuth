@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/saml/login', function () {
+    include '\app\SAML\saml\AuthnRequest.php';
+    include '\app\SAML\saml\Acs.php';
+
+    if( isset($_POST['SAMLResponse']) )
+    {
+        $response_obj = new Acs();
+        $response = $response_obj->processSamlResponse($_POST);
+        echo 'hello '.$response;
+    }
+    else{
+        $authn_request = new AuthnRequest();
+        $authn_request->initiateLogin();
+    }
+});
